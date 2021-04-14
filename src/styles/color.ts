@@ -1,0 +1,32 @@
+export const globalColor = {
+  gray0: 'var(--color-gray-0)',
+  gray50: 'var(--color-gray-50)',
+  gray100: 'var(--color-gray-100)',
+  gray200: 'var(--color-gray-200)',
+  gray300: 'var(--color-gray-300)',
+  gray400: 'var(--color-gray-400)',
+  gray500: 'var(--color-gray-500)',
+  gray600: 'var(--color-gray-600)',
+  gray700: 'var(--color-gray-700)',
+  gray800: 'var(--color-gray-800)',
+  gray900: 'var(--color-gray-900)',
+  brown500: 'var(--color-brown-500)',
+  brown700: 'var(--color-brown-700)',
+  brown900: 'var(--color-brown-900)',
+  darkTextDisabled: 'var(--color-dark-text-disabled)',
+  darkTextMediumEmphasis: 'var(--color-dark-text-medium-emphasis)',
+  darkTextHighEmphasis: 'var(--color-dark-text-high-emphasis)',
+  lightTextDisabled: 'var(--color-light-text-disabled)',
+  lightTextMediumEmphasis: 'var(--color-light-text-medium-emphasis)',
+  lightTextHighEmphasis: 'var(--color-light-text-high-emphasis)',
+}
+
+export const aliasColor = {
+  background: 'var(--color-background)',
+  surface: 'var(--color-surface)',
+  main: 'var(--color-main)',
+  mainLight: 'var(--color-main-light)',
+  mainDark: 'var(--color-main-dark)',
+  textOnSurface: 'var(--color-text-on-surface)',
+  textOnMain: 'var(--color-text-on-main)',
+}
