@@ -112,17 +112,36 @@ const TimerPage: FC = () => {
             </div>
           </>
         )}
+        {editable || (
+          <div css={graphWrapStyle}>
+            <div css={graphStyle(totalSecond, timeAtInput)}></div>
+          </div>
+        )}
         <div css={buttonWrapStyle}>
           {measurement ? (
             <>
-              <Button
-                onClick={() => setMeasurement(false)}
-                variant="border"
-                color="main"
-                css={buttonStyle}
-              >
-                一時停止
-              </Button>
+              {totalSecond > 0 ? (
+                <Button
+                  onClick={() => setMeasurement(false)}
+                  variant="border"
+                  color="main"
+                  css={buttonStyle}
+                >
+                  一時停止
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    reset()
+                    setEditable(true)
+                  }}
+                  variant="fill"
+                  color="sub"
+                  css={buttonStyle}
+                >
+                  リセット
+                </Button>
+              )}
             </>
           ) : (
             <>
@@ -160,7 +179,8 @@ const TimerPage: FC = () => {
 
 const layoutStyle = css({
   display: 'grid',
-  gridTemplateRows: '1fr 1fr',
+  gridTemplateColumns: '1fr 640px 1fr',
+  gridTemplateRows: '1fr 64px 1fr',
   height: '100%',
   placeItems: 'center',
 })
@@ -170,17 +190,23 @@ const inputTimeStyle = css({
   backgroundColor: aliasColor.surface,
   borderRadius: 20,
   display: 'flex',
+  gridColumn: '2 / 3',
+  justifyContent: 'center',
   lineHeight: 1,
   padding: '24px 48px 28px',
+  width: '100%',
 })
 
 const displayTimeStyle = (measurement: boolean) =>
   css({
     alignSelf: 'flex-end',
+    color: measurement ? 'inherit' : aliasColor.textDisabled,
     display: 'flex',
+    gridColumn: '2 / 3',
+    justifyContent: 'center',
     lineHeight: 1,
     padding: '24px 48px 28px',
-    color: measurement ? 'inherit' : aliasColor.textDisabled,
+    width: '100%',
   })
 
 const timerItemStyle = css({
@@ -217,12 +243,32 @@ const unitStyle = css(typography.subhead2, {
   marginLeft: 8,
 })
 
+const graphWrapStyle = css({
+  backgroundColor: aliasColor.surface,
+  borderRadius: 3,
+  gridColumn: '2 / 3',
+  height: 6,
+  width: '100%',
+})
+
+const graphStyle = (totalSecond: number, timeAtInput: number) =>
+  css({
+    backgroundColor: aliasColor.main,
+    borderRadius: 3,
+    height: '100%',
+    justifySelf: 'flex-start',
+    transition: 'width 1s linear',
+    width: `calc((${totalSecond} - 1) / (${timeAtInput} - 1) * 100%)`,
+  })
+
 const buttonWrapStyle = css({
   alignItems: 'center',
   alignSelf: 'flex-start',
   display: 'flex',
   flexDirection: 'column',
-  paddingTop: 64,
+  gridColumn: '2 / 3',
+  gridRow: '3 / 4',
+  paddingTop: 16,
   width: '100%',
 })
 
