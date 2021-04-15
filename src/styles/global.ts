@@ -23,6 +23,9 @@ export const global = css({
   '#__next': {
     display: 'contents',
   },
+  '[data-whatintent="mouse"] *:focus': {
+    outline: 'none',
+  },
   'h1, h2, h3, h4, h5, h6': {
     fontSize: 'inherit',
   },

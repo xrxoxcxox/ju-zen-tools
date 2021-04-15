@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { FC } from 'react'
 import { customProperty } from '../styles/cssCustomProperty'
 import { global } from '../styles/global'
+import 'what-input'
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => (
   <>
