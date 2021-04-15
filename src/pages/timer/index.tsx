@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { FC, useState, useEffect } from 'react'
 import { Button } from '../../components/Button'
 import { aliasColor } from '../../styles/color'
-import { typography } from '../../styles/typography'
+import { fontSize } from '../../styles/typography'
 
 const TimerPage: FC = () => {
   // Get a value from each input element.
@@ -65,8 +65,9 @@ const TimerPage: FC = () => {
                   min={0}
                   max={99}
                   onChange={(e): void => setHour(Number(e.target.value))}
-                  value={hour}
+                  value={hour === 0 ? '' : hour}
                   css={inputStyle}
+                  placeholder="0"
                 />
                 <span css={unitStyle}>時間</span>
               </div>
@@ -76,8 +77,9 @@ const TimerPage: FC = () => {
                   min={0}
                   max={59}
                   onChange={(e): void => setMinute(Number(e.target.value))}
-                  value={minute}
+                  value={minute === 0 ? '' : minute}
                   css={inputStyle}
+                  placeholder="0"
                 />
                 <span css={unitStyle}>分</span>
               </div>
@@ -87,8 +89,9 @@ const TimerPage: FC = () => {
                   min={0}
                   max={59}
                   onChange={(e): void => setSecond(Number(e.target.value))}
-                  value={second}
+                  value={second === 0 ? '' : second}
                   css={inputStyle}
+                  placeholder="0"
                 />
                 <span css={unitStyle}>秒</span>
               </div>
@@ -112,11 +115,9 @@ const TimerPage: FC = () => {
             </div>
           </>
         )}
-        {editable || (
-          <div css={graphWrapStyle}>
-            <div css={graphStyle(totalSecond, timeAtInput)}></div>
-          </div>
-        )}
+        <div css={graphWrapStyle}>
+          <div css={graphStyle(totalSecond, timeAtInput)}></div>
+        </div>
         <div css={buttonWrapStyle}>
           {measurement ? (
             <>
@@ -179,7 +180,8 @@ const TimerPage: FC = () => {
 
 const layoutStyle = css({
   display: 'grid',
-  gridTemplateColumns: '1fr 640px 1fr',
+  gridTemplateColumns:
+    'minmax(16px, 1fr) minmax(auto, 608px) minmax(16px, 1fr)',
   gridTemplateRows: '1fr 64px 1fr',
   height: '100%',
   placeItems: 'center',
@@ -193,7 +195,7 @@ const inputTimeStyle = css({
   gridColumn: '2 / 3',
   justifyContent: 'center',
   lineHeight: 1,
-  padding: '24px 48px 28px',
+  padding: '24px min(3.75vw, 24px) 28px',
   width: '100%',
 })
 
@@ -205,15 +207,16 @@ const displayTimeStyle = (measurement: boolean) =>
     gridColumn: '2 / 3',
     justifyContent: 'center',
     lineHeight: 1,
-    padding: '24px 48px 28px',
+    padding: '24px min(3.75vw, 24px) 28px',
     width: '100%',
   })
 
 const timerItemStyle = css({
+  alignItems: 'center',
   display: 'flex',
-  alignItems: 'baseline',
+  flexDirection: 'column',
   '& + &': {
-    marginLeft: 32,
+    marginLeft: 'min(6.25vw, 40px)',
   },
 })
 
@@ -222,10 +225,10 @@ const inputStyle = css({
   border: 'none',
   color: aliasColor.textOnSurface,
   fontFamily: '"Noto Serif", serif',
-  fontSize: 96,
+  fontSize: 'min(18.75vw, 120px)',
   height: '1em',
   textAlign: 'center',
-  width: 108,
+  width: 'min(22.5vw, 144px)',
   MozAppearance: 'textfield',
   '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
     WebkitAppearance: 'none',
@@ -234,13 +237,14 @@ const inputStyle = css({
 
 const displayNumberStyle = css({
   fontFamily: '"Noto Serif", serif',
-  fontSize: 96,
+  fontSize: 'min(18.75vw, 120px)',
   textAlign: 'center',
-  width: 108,
+  width: 'min(22.5vw, 144px)',
 })
 
-const unitStyle = css(typography.subhead2, {
-  marginLeft: 8,
+const unitStyle = css({
+  fontSize: `clamp(${fontSize.body1}, 2.8125vw, ${fontSize.subhead2})`,
+  marginTop: 4,
 })
 
 const graphWrapStyle = css({
