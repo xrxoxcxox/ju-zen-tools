@@ -9,6 +9,7 @@ export const global = css({
     padding: 0,
   },
   html: {
+    fontFamily: '"Noto Sans JP", sans-serif',
     height: '100%',
   },
   body: [

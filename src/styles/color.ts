@@ -27,6 +27,8 @@ export const aliasColor = {
   main: 'var(--color-main)',
   mainLight: 'var(--color-main-light)',
   mainDark: 'var(--color-main-dark)',
+  textDisabled: 'var(--color-text-disabled)',
+  textMediumEmphasis: 'var(--color-text-medium-emphasis)',
   textOnSurface: 'var(--color-text-on-surface)',
   textOnMain: 'var(--color-text-on-main)',
 }
