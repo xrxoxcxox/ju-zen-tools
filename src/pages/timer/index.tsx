@@ -183,37 +183,35 @@ const TimerPage: FC = () => {
   )
 }
 
+const gutter = 16
+const contentWidth = 800
+
 const layoutStyle = css({
   display: 'grid',
-  gridTemplateColumns:
-    'minmax(16px, 1fr) minmax(auto, 608px) minmax(16px, 1fr)',
+  gridTemplateColumns: `minmax(${gutter}px, 1fr) minmax(auto, calc(${contentWidth}px - ${gutter}px - ${gutter}px)) minmax(${gutter}px, 1fr)`,
   gridTemplateRows: '1fr 64px 1fr',
   height: '100%',
   placeItems: 'center',
 })
 
-const inputTimeStyle = css({
+const timeStyle = css({
   alignSelf: 'flex-end',
-  backgroundColor: aliasColor.surface,
-  borderRadius: 20,
   display: 'flex',
   gridColumn: '2 / 3',
   justifyContent: 'center',
   lineHeight: 1,
-  padding: '24px min(3.75vw, 24px) 28px',
+  padding: `24px min((24 / ${contentWidth} * 100vw), 24px) 32px`,
   width: '100%',
 })
 
+const inputTimeStyle = css(timeStyle, {
+  backgroundColor: aliasColor.surface,
+  borderRadius: 20,
+})
+
 const displayTimeStyle = (measurement: boolean) =>
-  css({
-    alignSelf: 'flex-end',
+  css(timeStyle, {
     color: measurement ? 'inherit' : aliasColor.textDisabled,
-    display: 'flex',
-    gridColumn: '2 / 3',
-    justifyContent: 'center',
-    lineHeight: 1,
-    padding: '24px min(3.75vw, 24px) 28px',
-    width: '100%',
   })
 
 const timerItemStyle = css({
@@ -221,34 +219,30 @@ const timerItemStyle = css({
   display: 'flex',
   flexDirection: 'column',
   '& + &': {
-    marginLeft: 'min(6.25vw, 40px)',
+    marginLeft: `min((24 / ${contentWidth} * 100vw), 24px)`,
   },
 })
 
-const inputStyle = css({
+const displayNumberStyle = css({
+  fontFamily: '"Noto Serif", serif',
+  fontSize: `clamp(72px, (160 / ${contentWidth} * 100vw), 160px)`,
+  textAlign: 'center',
+  width: `min((192 / ${contentWidth} * 100vw), 192px)`,
+})
+
+const inputStyle = css(displayNumberStyle, {
   backgroundColor: 'transparent',
   border: 'none',
   color: aliasColor.textOnSurface,
-  fontFamily: '"Noto Serif", serif',
-  fontSize: 'min(18.75vw, 120px)',
   height: '1em',
-  textAlign: 'center',
-  width: 'min(22.5vw, 144px)',
   MozAppearance: 'textfield',
   '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
     WebkitAppearance: 'none',
   },
 })
 
-const displayNumberStyle = css({
-  fontFamily: '"Noto Serif", serif',
-  fontSize: 'min(18.75vw, 120px)',
-  textAlign: 'center',
-  width: 'min(22.5vw, 144px)',
-})
-
 const unitStyle = css({
-  fontSize: `clamp(${fontSize.body1}, 2.8125vw, ${fontSize.subhead2})`,
+  fontSize: `clamp(${fontSize.body1}, (18 / ${contentWidth} * 100vw), ${fontSize.subhead2})`,
   marginTop: 4,
 })
 
