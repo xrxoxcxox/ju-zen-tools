@@ -64,7 +64,13 @@ const button = css(typography.subhead1, {
   borderWidth: 2,
   fontWeight: 700,
   padding: '6px 22px',
+  transition: 'opacity 200ms',
   ':not(:disabled)': {
     boxShadow: '0px 2px 16px rgba(0, 0, 0, 0.12)',
+    cursor: 'pointer',
+  },
+  ':disabled': {
+    cursor: 'not-allowed',
+    opacity: 0.5,
   },
 })

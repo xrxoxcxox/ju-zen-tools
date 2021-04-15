@@ -154,6 +154,7 @@ const TimerPage: FC = () => {
                 variant="fill"
                 color="main"
                 css={buttonStyle}
+                disabled={timeAtInput === 0}
               >
                 {editable ? 'スタート' : '再開'}
               </Button>
