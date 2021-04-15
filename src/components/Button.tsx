@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { FC } from 'react'
+import { forwardRef } from 'react'
 import { aliasColor } from '../styles/color'
 import { typography } from '../styles/typography'
 
@@ -9,8 +9,10 @@ type Props = ButtonProps & {
   variant: 'fill' | 'border'
   children: string
 }
+export type Ref = HTMLButtonElement
 
-export const Button: FC<Props> = ({ children, variant, color, ...props }) => {
+export const Button = forwardRef<Ref, Props>(function Button(props, ref) {
+  const { children, variant, color, ...buttonProps } = props
   const handleBorderColor = (color: Props['color']) => {
     switch (color) {
       case 'sub':
@@ -52,11 +54,15 @@ export const Button: FC<Props> = ({ children, variant, color, ...props }) => {
     }
   }
   return (
-    <button css={[button, handleVariant(variant, color)]} {...props}>
+    <button
+      css={[button, handleVariant(variant, color)]}
+      ref={ref}
+      {...buttonProps}
+    >
       {children}
     </button>
   )
-}
+})
 
 const button = css(typography.subhead1, {
   borderRadius: 12,

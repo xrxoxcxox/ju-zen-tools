@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import Head from 'next/head'
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, useRef } from 'react'
 import { Button } from '../../components/Button'
 import { aliasColor } from '../../styles/color'
 import { fontSize } from '../../styles/typography'
@@ -44,7 +44,10 @@ const TimerPage: FC = () => {
   const reset = () => {
     setTotalSecond(timeAtInput)
     setMeasurement(false)
+    startButtonRef.current?.focus()
   }
+
+  const startButtonRef = useRef<HTMLButtonElement>(null)
 
   return (
     <>
@@ -155,6 +158,7 @@ const TimerPage: FC = () => {
                 color="main"
                 css={buttonStyle}
                 disabled={timeAtInput === 0}
+                ref={startButtonRef}
               >
                 {editable ? 'スタート' : '再開'}
               </Button>
