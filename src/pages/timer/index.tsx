@@ -262,8 +262,10 @@ const graphStyle = (totalSecond: number, timeAtInput: number) =>
     borderRadius: 3,
     height: '100%',
     justifySelf: 'flex-start',
-    transition: 'width 1s linear',
-    width: `calc((${totalSecond} - 1) / (${timeAtInput} - 1) * 100%)`,
+    transition: `width ${
+      totalSecond === timeAtInput ? '250ms ease-out' : '1000ms linear'
+    }`,
+    width: `calc(${totalSecond} / ${timeAtInput} * 100%)`,
   })
 
 const buttonWrapStyle = css({
