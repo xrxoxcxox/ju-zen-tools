@@ -236,9 +236,6 @@ const inputStyle = css(displayNumberStyle, {
   '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
     WebkitAppearance: 'none',
   },
-  // '&::placeholder': {
-  //   paddingTop: '0.25em',
-  // },
 })
 
 const unitStyle = css({
