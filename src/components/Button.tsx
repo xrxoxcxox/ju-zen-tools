@@ -23,7 +23,7 @@ export const Button = forwardRef<Ref, Props>(function Button(props, ref) {
       default:
         return css({
           borderColor: aliasColor.main,
-          color: aliasColor.main,
+          color: aliasColor.mainDark,
         })
     }
   }
@@ -31,8 +31,8 @@ export const Button = forwardRef<Ref, Props>(function Button(props, ref) {
     switch (color) {
       case 'sub':
         return css({
-          backgroundColor: aliasColor.surface,
-          color: aliasColor.textMediumEmphasis,
+          backgroundColor: aliasColor.textDisabled,
+          color: aliasColor.textOnSurface,
         })
       default:
         return css({
