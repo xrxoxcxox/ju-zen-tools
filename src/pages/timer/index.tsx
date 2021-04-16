@@ -196,8 +196,7 @@ const timeStyle = css({
   display: 'flex',
   gridColumn: '2 / 3',
   justifyContent: 'center',
-  lineHeight: 1,
-  padding: `24px min((24 / ${contentWidth} * 100vw), 24px) 32px`,
+  padding: `min((8 / ${contentWidth} * 100vw), 8px) min((24 / ${contentWidth} * 100vw), 24px) min((40 / ${contentWidth} * 100vw), 40px)`,
   width: '100%',
 })
 
@@ -223,6 +222,8 @@ const timerItemStyle = css({
 const displayNumberStyle = css({
   fontFamily: '"Noto Serif", serif',
   fontSize: `clamp(72px, (160 / ${contentWidth} * 100vw), 160px)`,
+  lineHeight: 'normal',
+  marginBottom: '-0.15em',
   textAlign: 'center',
   width: `min((192 / ${contentWidth} * 100vw), 192px)`,
 })
@@ -231,16 +232,17 @@ const inputStyle = css(displayNumberStyle, {
   backgroundColor: 'transparent',
   border: 'none',
   color: aliasColor.textOnSurface,
-  height: '1em',
   MozAppearance: 'textfield',
   '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
     WebkitAppearance: 'none',
   },
+  // '&::placeholder': {
+  //   paddingTop: '0.25em',
+  // },
 })
 
 const unitStyle = css({
   fontSize: `clamp(${fontSize.body1}, (18 / ${contentWidth} * 100vw), ${fontSize.subhead2})`,
-  marginTop: 4,
 })
 
 const graphWrapStyle = css({
