@@ -20,15 +20,3 @@ export const globalColor = {
   lightTextMediumEmphasis: 'var(--color-light-text-medium-emphasis)',
   lightTextHighEmphasis: 'var(--color-light-text-high-emphasis)',
 }
-
-export const aliasColor = {
-  background: 'var(--color-background)',
-  surface: 'var(--color-surface)',
-  main: 'var(--color-main)',
-  mainLight: 'var(--color-main-light)',
-  mainDark: 'var(--color-main-dark)',
-  textDisabled: 'var(--color-text-disabled)',
-  textMediumEmphasis: 'var(--color-text-medium-emphasis)',
-  textOnSurface: 'var(--color-text-on-surface)',
-  textOnMain: 'var(--color-text-on-main)',
-}
