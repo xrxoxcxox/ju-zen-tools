@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import Head from 'next/head'
 import { FC, useState, useEffect, useRef } from 'react'
 import { Button } from '../../components/Button'
-import { aliasColor } from '../../styles/color'
+import { globalColor } from '../../styles/color'
 import { fontSize } from '../../styles/typography'
 
 const TimerPage: FC = () => {
@@ -188,13 +188,13 @@ const timeStyle = css({
 })
 
 const inputTimeStyle = css(timeStyle, {
-  backgroundColor: aliasColor.surface,
+  backgroundColor: globalColor.gray0,
   borderRadius: 20,
 })
 
 const displayTimeStyle = (measurement: boolean) =>
   css(timeStyle, {
-    color: measurement ? 'inherit' : aliasColor.textDisabled,
+    color: measurement ? 'inherit' : globalColor.darkTextDisabled,
   })
 
 const timerItemStyle = css({
@@ -218,7 +218,6 @@ const displayNumberStyle = css({
 const inputStyle = css(displayNumberStyle, {
   backgroundColor: 'transparent',
   border: 'none',
-  color: aliasColor.textOnSurface,
   MozAppearance: 'textfield',
   '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
     WebkitAppearance: 'none',
@@ -230,7 +229,7 @@ const unitStyle = css({
 })
 
 const graphWrapStyle = css({
-  backgroundColor: aliasColor.surface,
+  backgroundColor: globalColor.gray0,
   borderRadius: 3,
   gridColumn: '2 / 3',
   height: 6,
@@ -239,7 +238,7 @@ const graphWrapStyle = css({
 
 const graphStyle = (totalSecond: number, timeAtInput: number) =>
   css({
-    backgroundColor: aliasColor.main,
+    backgroundColor: globalColor.brown700,
     borderRadius: 3,
     height: '100%',
     justifySelf: 'flex-start',
