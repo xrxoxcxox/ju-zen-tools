@@ -123,27 +123,14 @@ const TimerPage: FC = () => {
         </div>
         <div css={buttonWrapStyle}>
           {measurement ? (
-            <>
-              <Button
-                onClick={() => setMeasurement(false)}
-                variant="border"
-                color="main"
-                css={buttonStyle}
-              >
-                一時停止
-              </Button>
-              <Button
-                onClick={() => {
-                  reset()
-                  setEditable(true)
-                }}
-                variant="fill"
-                color="sub"
-                css={[buttonStyle, resetButtonStyle]}
-              >
-                リセット
-              </Button>
-            </>
+            <Button
+              onClick={() => setMeasurement(false)}
+              variant="border"
+              color="main"
+              css={buttonStyle}
+            >
+              一時停止
+            </Button>
           ) : (
             <>
               <Button
@@ -157,7 +144,7 @@ const TimerPage: FC = () => {
                 disabled={timeAtInput === 0}
                 ref={startButtonRef}
               >
-                {editable ? 'スタート' : '再開'}
+                {editable ? '開始' : '再開'}
               </Button>
               {editable || (
                 <Button
@@ -169,7 +156,7 @@ const TimerPage: FC = () => {
                   color="sub"
                   css={[buttonStyle, resetButtonStyle]}
                 >
-                  リセット
+                  キャンセル
                 </Button>
               )}
             </>
