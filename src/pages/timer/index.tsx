@@ -72,7 +72,7 @@ const TimerPage: FC = () => {
                   css={inputStyle}
                   placeholder="0"
                 />
-                <span css={unitStyle}>時間</span>
+                <span css={unitStyle(editable, measurement)}>時間</span>
               </div>
               <div css={timerItemStyle}>
                 <input
@@ -84,7 +84,7 @@ const TimerPage: FC = () => {
                   css={inputStyle}
                   placeholder="0"
                 />
-                <span css={unitStyle}>分</span>
+                <span css={unitStyle(editable, measurement)}>分</span>
               </div>
               <div css={timerItemStyle}>
                 <input
@@ -96,7 +96,7 @@ const TimerPage: FC = () => {
                   css={inputStyle}
                   placeholder="0"
                 />
-                <span css={unitStyle}>秒</span>
+                <span css={unitStyle(editable, measurement)}>秒</span>
               </div>
             </div>
           </>
@@ -105,21 +105,23 @@ const TimerPage: FC = () => {
             <div css={displayTimeStyle(measurement)}>
               <div css={timerItemStyle}>
                 <span css={displayNumberStyle}>{displayHour}</span>
-                <span css={unitStyle}>時間</span>
+                <span css={unitStyle(editable, measurement)}>時間</span>
               </div>
               <div css={timerItemStyle}>
                 <span css={displayNumberStyle}>{displayMinute}</span>
-                <span css={unitStyle}>分</span>
+                <span css={unitStyle(editable, measurement)}>分</span>
               </div>
               <div css={timerItemStyle}>
                 <span css={displayNumberStyle}>{displaySecond}</span>
-                <span css={unitStyle}>秒</span>
+                <span css={unitStyle(editable, measurement)}>秒</span>
               </div>
             </div>
           </>
         )}
         <div css={graphWrapStyle}>
-          <div css={graphStyle(totalSecond, timeAtInput)}></div>
+          <div css={graphBackgroundStyle}>
+            <div css={graphStyle(totalSecond, timeAtInput)}></div>
+          </div>
         </div>
         <div css={buttonWrapStyle}>
           {measurement ? (
@@ -152,7 +154,7 @@ const TimerPage: FC = () => {
                     reset()
                     setEditable(true)
                   }}
-                  variant="fill"
+                  variant="border"
                   color="sub"
                   css={[buttonStyle, resetButtonStyle]}
                 >
@@ -173,7 +175,7 @@ const contentWidth = 800
 const layoutStyle = css({
   display: 'grid',
   gridTemplateColumns: `minmax(${gutter}px, 1fr) minmax(auto, calc(${contentWidth}px - ${gutter}px - ${gutter}px)) minmax(${gutter}px, 1fr)`,
-  gridTemplateRows: '1fr 64px 1fr',
+  gridTemplateRows: '1fr auto 1fr',
   height: '100%',
   placeItems: 'center',
 })
@@ -224,14 +226,25 @@ const inputStyle = css(displayNumberStyle, {
   },
 })
 
-const unitStyle = css({
-  fontSize: `clamp(${fontSize.body1}, (18 / ${contentWidth} * 100vw), ${fontSize.subhead2})`,
-})
+const unitStyle = (editable: boolean, measurement: boolean) =>
+  css({
+    color:
+      editable || measurement
+        ? globalColor.darkTextMediumEmphasis
+        : globalColor.darkTextDisabled,
+    fontSize: `clamp(${fontSize.body1}, (18 / ${contentWidth} * 100vw), ${fontSize.subhead2})`,
+  })
 
 const graphWrapStyle = css({
+  gridColumn: '2 / 3',
+  paddingBottom: 64,
+  paddingTop: 32,
+  width: '100%',
+})
+
+const graphBackgroundStyle = css({
   backgroundColor: globalColor.gray0,
   borderRadius: 3,
-  gridColumn: '2 / 3',
   height: 6,
   width: '100%',
 })
@@ -255,7 +268,6 @@ const buttonWrapStyle = css({
   flexDirection: 'column',
   gridColumn: '2 / 3',
   gridRow: '3 / 4',
-  paddingTop: 16,
   width: '100%',
 })
 
