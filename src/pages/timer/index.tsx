@@ -119,7 +119,9 @@ const TimerPage: FC = () => {
           </>
         )}
         <div css={graphWrapStyle}>
-          <div css={graphStyle(totalSecond, timeAtInput)}></div>
+          <div css={graphBackgroundStyle}>
+            <div css={graphStyle(totalSecond, timeAtInput)}></div>
+          </div>
         </div>
         <div css={buttonWrapStyle}>
           {measurement ? (
@@ -173,7 +175,7 @@ const contentWidth = 800
 const layoutStyle = css({
   display: 'grid',
   gridTemplateColumns: `minmax(${gutter}px, 1fr) minmax(auto, calc(${contentWidth}px - ${gutter}px - ${gutter}px)) minmax(${gutter}px, 1fr)`,
-  gridTemplateRows: '1fr 64px 1fr',
+  gridTemplateRows: '1fr auto 1fr',
   height: '100%',
   placeItems: 'center',
 })
@@ -229,9 +231,15 @@ const unitStyle = css({
 })
 
 const graphWrapStyle = css({
+  gridColumn: '2 / 3',
+  paddingBottom: 64,
+  paddingTop: 32,
+  width: '100%',
+})
+
+const graphBackgroundStyle = css({
   backgroundColor: globalColor.gray0,
   borderRadius: 3,
-  gridColumn: '2 / 3',
   height: 6,
   width: '100%',
 })
@@ -255,7 +263,6 @@ const buttonWrapStyle = css({
   flexDirection: 'column',
   gridColumn: '2 / 3',
   gridRow: '3 / 4',
-  paddingTop: 16,
   width: '100%',
 })
 
