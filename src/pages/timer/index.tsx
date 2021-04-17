@@ -72,7 +72,7 @@ const TimerPage: FC = () => {
                   css={inputStyle}
                   placeholder="0"
                 />
-                <span css={unitStyle}>時間</span>
+                <span css={unitStyle(editable, measurement)}>時間</span>
               </div>
               <div css={timerItemStyle}>
                 <input
@@ -84,7 +84,7 @@ const TimerPage: FC = () => {
                   css={inputStyle}
                   placeholder="0"
                 />
-                <span css={unitStyle}>分</span>
+                <span css={unitStyle(editable, measurement)}>分</span>
               </div>
               <div css={timerItemStyle}>
                 <input
@@ -96,7 +96,7 @@ const TimerPage: FC = () => {
                   css={inputStyle}
                   placeholder="0"
                 />
-                <span css={unitStyle}>秒</span>
+                <span css={unitStyle(editable, measurement)}>秒</span>
               </div>
             </div>
           </>
@@ -105,15 +105,15 @@ const TimerPage: FC = () => {
             <div css={displayTimeStyle(measurement)}>
               <div css={timerItemStyle}>
                 <span css={displayNumberStyle}>{displayHour}</span>
-                <span css={unitStyle}>時間</span>
+                <span css={unitStyle(editable, measurement)}>時間</span>
               </div>
               <div css={timerItemStyle}>
                 <span css={displayNumberStyle}>{displayMinute}</span>
-                <span css={unitStyle}>分</span>
+                <span css={unitStyle(editable, measurement)}>分</span>
               </div>
               <div css={timerItemStyle}>
                 <span css={displayNumberStyle}>{displaySecond}</span>
-                <span css={unitStyle}>秒</span>
+                <span css={unitStyle(editable, measurement)}>秒</span>
               </div>
             </div>
           </>
@@ -226,9 +226,14 @@ const inputStyle = css(displayNumberStyle, {
   },
 })
 
-const unitStyle = css({
-  fontSize: `clamp(${fontSize.body1}, (18 / ${contentWidth} * 100vw), ${fontSize.subhead2})`,
-})
+const unitStyle = (editable: boolean, measurement: boolean) =>
+  css({
+    color:
+      editable || measurement
+        ? globalColor.darkTextMediumEmphasis
+        : globalColor.darkTextDisabled,
+    fontSize: `clamp(${fontSize.body1}, (18 / ${contentWidth} * 100vw), ${fontSize.subhead2})`,
+  })
 
 const graphWrapStyle = css({
   gridColumn: '2 / 3',
