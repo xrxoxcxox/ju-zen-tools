@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import { forwardRef } from 'react'
-import { aliasColor } from '../styles/color'
+import { globalColor } from '../styles/color'
 import { typography } from '../styles/typography'
 
 type ButtonProps = JSX.IntrinsicElements['button']
@@ -17,13 +17,13 @@ export const Button = forwardRef<Ref, Props>(function Button(props, ref) {
     switch (color) {
       case 'sub':
         return css({
-          borderColor: aliasColor.textMediumEmphasis,
-          color: aliasColor.textMediumEmphasis,
+          borderColor: globalColor.darkTextMediumEmphasis,
+          color: globalColor.darkTextMediumEmphasis,
         })
       default:
         return css({
-          borderColor: aliasColor.main,
-          color: aliasColor.main,
+          borderColor: globalColor.brown700,
+          color: globalColor.brown700,
         })
     }
   }
@@ -31,13 +31,13 @@ export const Button = forwardRef<Ref, Props>(function Button(props, ref) {
     switch (color) {
       case 'sub':
         return css({
-          backgroundColor: aliasColor.surface,
-          color: aliasColor.textMediumEmphasis,
+          backgroundColor: globalColor.darkTextDisabled,
+          color: globalColor.lightTextHighEmphasis,
         })
       default:
         return css({
-          backgroundColor: aliasColor.main,
-          color: aliasColor.textOnMain,
+          backgroundColor: globalColor.brown700,
+          color: globalColor.lightTextHighEmphasis,
         })
     }
   }
@@ -45,7 +45,7 @@ export const Button = forwardRef<Ref, Props>(function Button(props, ref) {
     switch (variant) {
       case 'border':
         return css(handleBorderColor(color), {
-          backgroundColor: aliasColor.surface,
+          backgroundColor: globalColor.gray0,
         })
       default:
         return css(handleFillColor(color), {

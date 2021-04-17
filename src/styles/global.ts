@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { aliasColor } from '../styles/color'
+import { globalColor } from '../styles/color'
 import { typography } from '../styles/typography'
 
 export const global = css({
@@ -15,8 +15,8 @@ export const global = css({
   body: [
     typography.body1,
     {
-      backgroundColor: aliasColor.background,
-      color: aliasColor.textOnSurface,
+      backgroundColor: globalColor.gray100,
+      color: globalColor.darkTextHighEmphasis,
       height: '100%',
     },
   ],
