@@ -32,7 +32,7 @@ export const Button = forwardRef<Ref, Props>(function Button(props, ref) {
       case 'sub':
         return css({
           backgroundColor: globalColor.darkTextDisabled,
-          color: globalColor.lightTextHighEmphasis,
+          color: globalColor.darkTextHighEmphasis,
         })
       default:
         return css({

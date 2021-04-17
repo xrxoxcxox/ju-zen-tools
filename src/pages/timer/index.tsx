@@ -154,7 +154,7 @@ const TimerPage: FC = () => {
                     reset()
                     setEditable(true)
                   }}
-                  variant="fill"
+                  variant="border"
                   color="sub"
                   css={[buttonStyle, resetButtonStyle]}
                 >
